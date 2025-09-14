@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Nivel 0 - Aprende a Llamar (Test 3)</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background: #f8f9fa; }
+.container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+h1 { text-align: center; }
+.question { margin-bottom: 20px; }
+button { background: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+button:hover { background: #0056b3; }
+.result { font-weight: bold; margin-top: 20px; text-align: center; font-size: 18px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Test Nivel 0 – Test 3</h1>
+<form id="quizForm">
+<div class="question">
+<p>1. Si durante la llamada notas que la otra persona está distraída, lo correcto es:</p>
+<label><input type="radio" name="q1" value="0"> Ignorar y continuar</label><br>
+<label><input type="radio" name="q1" value="1"> Preguntar si es un buen momento para hablar</label><br>
+<label><input type="radio" name="q1" value="0"> Acelerar la conversación</label>
+</div>
+
+<div class="question">
+<p>2. Cuando compartes información compleja, lo mejor es:</p>
+<label><input type="radio" name="q2" value="0"> Hablar rápido para terminar pronto</label><br>
+<label><input type="radio" name="q2" value="1"> Explicar paso a paso y verificar que se entiende</label><br>
+<label><input type="radio" name="q2" value="0"> Enviar todo por correo y no explicarlo</label>
+</div>
+
+<div class="question">
+<p>3. Si no recuerdas un dato durante la llamada, lo correcto es:</p>
+<label><input type="radio" name="q3" value="0"> Inventarlo</label><br>
+<label><input type="radio" name="q3" value="1"> Admitir que no lo recuerdas y ofrecer averiguarlo</label><br>
+<label><input type="radio" name="q3" value="0"> Cambiar de tema rápidamente</label>
+</div>
+
+<div class="question">
+<p>4. Para cerrar la llamada profesionalmente, lo ideal es:</p>
+<label><input type="radio" name="q4" value="0"> Colgar inmediatamente después de la última frase</label><br>
+<label><input type="radio" name="q4" value="1"> Resumir acuerdos y despedirse cordialmente</label><br>
+<label><input type="radio" name="q4" value="0"> Decir adiós y empezar otra llamada</label>
+</div>
+
+<div class="question">
+<p>5. Durante la llamada, tu lenguaje debe ser:</p>
+<label><input type="radio" name="q5" value="1"> Claro, respetuoso y profesional</label><br>
+<label><input type="radio" name="q5" value="0"> Informal y coloquial</label><br>
+<label><input type="radio" name="q5" value="0"> Técnico sin explicaciones</label>
+</div>
+
+<div style="text-align:center; margin-top: 20px;">
+<button type="button" onclick="checkAnswers()">Enviar</button>
+</div>
+</form>
+
+<div id="result" class="result"></div>
+
+<script>
+function checkAnswers() {
+    let form = document.forms["quizForm"];
+    let total = 5;
+    let score = 0;
+    
+    // Validar que todas las preguntas tengan respuesta
+    for (let i = 1; i <= total; i++) {
+        let answer = form["q"+i].value;
+        if (answer === "") {
+            alert("Por favor, responde todas las preguntas antes de enviar.");
+            return;
+        }
+        score += parseInt(answer);
+    }
+    
+    // Mostrar resultado
+    let resultText = "Tu puntuación: " + score + "/" + total + ". ";
+    if (score === 5) resultText += "¡Excelente, estás listo para practicar!";
+    else if (score >= 3) resultText += "Muy bien, repasa algunos detalles.";
+    else resultText += "Necesitas reforzar lo básico, vuelve al módulo inicial.";
+    
+    document.getElementById("result").innerText = resultText;
+}
+</script>
+</body>
+</html>
